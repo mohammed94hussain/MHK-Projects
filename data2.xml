@@ -1,0 +1,12 @@
+<data>
+    <row>
+        <id>3</id>
+        <name>baz</name>
+        <value>300</value>
+    </row>
+    <row>
+        <id>4</id>
+        <name>qux</name>
+        <value>400</value>
+    </row>
+</data>
