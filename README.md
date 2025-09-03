@@ -1,36 +1,46 @@
-# Data Merger
+# GUI Data Merger
 
-This script merges two data sheets into one. It supports both CSV and XML file formats for the input files and outputs a single CSV file.
+This application provides a graphical user interface (GUI) to merge multiple data sheets into a single CSV file. It supports both CSV and XML file formats for the input files.
 
-## Requirements
+## Features
 
-The script uses only standard Python libraries, so no external packages are required.
+- **Graphical User Interface:** Easy to use interface for selecting and managing files.
+- **Multi-File Support:** Merge two or more files at once.
+- **Mixed Format Support:** Combine CSV and XML files in the same merge operation.
+- **Column Normalization:** Automatically combines columns from all files. If a row from one file doesn't have a column that exists in another, it will be given a blank value for that column in the output.
 
-## Usage
+## How to Use
 
-To use the script, run `merger.py` from the command line, providing the paths to the two input files and the desired output file.
+1.  **Run the application:**
+    -   You can run the script directly using Python: `python merger.py`
+    -   Alternatively, you can build an executable.
+2.  **Add Files:** Click the "Add File(s)" button to open a file browser. You can select multiple CSV or XML files.
+3.  **Manage Files:** The selected files will appear in the list. To remove a file, select it in the list and click "Remove Selected". You can select multiple files to remove by holding `Ctrl` or `Shift`.
+4.  **Merge:** Once you have at least two files in the list, click the "Merge Files" button.
+5.  **Save:** A "save as" dialog will appear. Choose a name and location for your merged CSV file and click "Save".
+6.  A confirmation message will appear when the merge is complete.
 
+## How to Build an Executable
+
+This script can be packaged into a standalone executable (`.exe` on Windows) so you can run it without needing to have Python installed.
+
+### Prerequisites
+
+You need `pyinstaller`. You can install it using pip:
 ```bash
-python merger.py <file1> <file2> <output.csv>
+pip install -r requirements.txt
 ```
 
-- `<file1>`: Path to the first input file (can be `.csv` or `.xml`).
-- `<file2>`: Path to the second input file (can be `.csv` or `.xml`).
-- `<output.csv>`: Path to the merged output file (will be in CSV format).
+### Build Command
 
-### Examples
+To build the executable, run the following command in your terminal from the project directory:
 
-**Merging two CSV files:**
 ```bash
-python merger.py data1.csv data2.csv merged_csv.csv
+pyinstaller --onefile --windowed --name "FileMerger" merger.py
 ```
 
-**Merging a CSV and an XML file:**
-```bash
-python merger.py data1.csv data2.xml merged_mixed.csv
-```
+- `--onefile`: Packages everything into a single executable file.
+- `--windowed`: Prevents the command prompt from appearing when you run the application.
+- `--name "FileMerger"`: Sets the name of the output executable.
 
-**Merging two XML files:**
-```bash
-python merger.py data1.xml data2.xml merged_xml.csv
-```
+After the command finishes, you will find the executable file inside a new `dist` folder. You can move this file anywhere on your computer and run it.
