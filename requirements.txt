@@ -1,1 +1,3 @@
-pyinstaller
+netmiko
+pandas
+openpyxl
